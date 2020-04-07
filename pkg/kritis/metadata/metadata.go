@@ -18,6 +18,7 @@ package metadata
 
 import (
 	"fmt"
+	"os"
 	"strings"
 
 	kritisv1beta1 "github.com/grafeas/kritis/pkg/kritis/apis/kritis/v1beta1"
@@ -118,6 +119,7 @@ func IsFixAvailable(pis []*vulnerability.PackageIssue) bool {
 }
 
 func GetVulnerabilityFromOccurrence(occ *grafeas.Occurrence) *Vulnerability {
+	fmt.Fprintf(os.Stdout, "hello world!\n")
 	vulnDetails := occ.GetVulnerability()
 	if vulnDetails == nil {
 		return nil

@@ -1,0 +1,17 @@
+apiVersion: skaffold/v2alpha4
+kind: Config
+metadata:
+  name: kritis
+build:
+  artifacts:
+  - image: gcr.io/nkubala-demo/kritis-server
+    docker:
+      dockerfile: deploy/Dockerfile
+    context: .
+deploy:
+  helm:
+    releases:
+      - name: kritis
+        chartPath: kritis-charts
+        values:
+          image.image: gcr.io/nkubala-demo/kritis-server
